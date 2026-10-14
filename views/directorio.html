@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directorio Digital UTMAT</title>
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+
+  <!-- 1. Header Navegación Superior -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="logo-box">
+          <img src="https://th.bing.com/th/id/OIP.c2cA4Bv5BBZG1-Iwl3BaTAAAAA?w=270&h=93&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" 
+               alt="UTMAT Logo" 
+               class="header-logo">
+        </div>
+        <div class="brand-text">
+          <span class="title">Directorio Digital</span>
+          <span class="subtitle">Comunidad & Talento UTMAT</span>
+        </div>
+      </div>
+      
+      <nav class="top-nav">
+        <a href="#" class="nav-link active" onclick="filtrarCategoria('todos')">🏠 Inicio</a>
+        <a href="#destacado-semana" class="nav-link">⭐ Destacado</a>
+        <a href="#explora-categorias" class="nav-link">📂 Categorías</a>
+        <a href="#" class="nav-link" id="btnFavoritos" onclick="mostrarFavoritos(event)">🤍 Favoritos <span id="favCount">(0)</span></a>
+        <a href="/admin" class="nav-link nav-admin-link">⚙️ Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 2. Hero Banner Institucional UTMAT -->
+  <section class="hero-banner">
+    <div class="hero-container">
+      <div class="hero-card">
+        <div class="hero-text-side">
+          <h1>Conectamos talento,<br><span class="highlight-blue">servicios y oportunidades</span><br>en nuestra comunidad UTMAT</h1>
+          <p>Apoyemos los emprendimientos, oficios y talentos de nuestros estudiantes, padres de familia y egresados.</p>
+          <div class="underline-decoration"></div>
+        </div>
+
+        <div class="hero-image-side">
+          <img src="https://metropolitanoaguascalientes.com.mx/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-01-at-17.20.44.jpeg" 
+               alt="Campus UTMAT" 
+               class="hero-img-full"
+               onerror="this.onerror=null; this.src='https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=1000';">
+          
+          <div class="hero-handwritten-text">
+            <span>← we are the best again ♡</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. TALENTO DESTACADO DEL MES -->
+  <section class="seccion-destacado" id="destacado-semana">
+    <div class="section-container">
+      <div class="destacado-banner-card">
+        <div class="destacado-badge-tag">🏆 TALENTO DESTACADO DEL MES</div>
+        <div class="destacado-grid">
+          <div class="destacado-info">
+            <h2>🛠️ Mantenimiento Técnico & PC "Express UTMAT"</h2>
+            <p class="destacado-p">Líder en recomendaciones esta semana. Excelente servicio técnico especializado con descuento especial para la comunidad universitaria.</p>
+            <div class="destacado-features">
+              <span class="feat-pill">⭐ 5.0 (24 Opiniones)</span>
+              <span class="feat-pill promo-pill">🎁 15% Dto. con credencial UTMAT</span>
+              <span class="feat-pill urgent-pill">⚡ Atención el mismo día</span>
+            </div>
+          </div>
+          <div class="destacado-cta">
+            <button class="btn-destacado-ver" onclick="seleccionarProveedorPorOficio('Mantenimiento PC Express')">
+              👉 Ver Perfil & Promoción
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Categorías con Iconos -->
+  <section class="explora-categorias" id="explora-categorias">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>📊 Explora por categoría</h2>
+        <a href="#" onclick="filtrarCategoria('todos')" class="link-ver-todas">Ver todas &rarr;</a>
+      </div>
+
+      <div class="grid-categorias">
+        <button class="cat-card active" data-cat="todos" onclick="filtrarCategoria('todos')">
+          <div class="cat-icon cat-all">🌐</div>
+          <span>Todas</span>
+        </button>
+        <button class="cat-card" data-cat="Servicio" onclick="filtrarCategoria('Servicio')">
+          <div class="cat-icon cat-serv">🤝</div>
+          <span>Servicios generales</span>
+        </button>
+        <button class="cat-card" data-cat="Oficio" onclick="filtrarCategoria('Oficio')">
+          <div class="cat-icon cat-ofi">🛠️</div>
+          <span>Oficios</span>
+        </button>
+        <button class="cat-card" data-cat="Comercio o negocio" onclick="filtrarCategoria('Comercio o negocio')">
+          <div class="cat-icon cat-com">🏪</div>
+          <span>Negocios / Productos</span>
+        </button>
+        <button class="cat-card" data-cat="Profesión" onclick="filtrarCategoria('Profesión')">
+          <div class="cat-icon cat-prof">🎓</div>
+          <span>Servicios profesionales</span>
+        </button>
+        <button class="cat-card" data-cat="Otra" onclick="filtrarCategoria('Otra')">
+          <div class="cat-icon cat-otr">📦</div>
+          <span>Otros y más</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Buscador y Filtros (Sin chips inferiores) -->
+  <section class="seccion-busqueda">
+    <div class="section-container">
+      <div class="bar-busqueda-wrapper">
+        <div class="input-search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="buscador" placeholder="Buscar por servicio, oficio, nombre o promoción..." oninput="aplicarFiltros()">
+        </div>
+
+        <div class="selects-filters">
+          <select id="selectCategoriaFilter" onchange="cambiarSelectCategoria(this.value)">
+            <option value="todos">Todas las categorías</option>
+            <option value="Oficio">🛠️ Oficios</option>
+            <option value="Profesión">🎓 Servicios profesionales</option>
+            <option value="Servicio">🤝 Servicios generales</option>
+            <option value="Comercio o negocio">🏪 Negocios y Comercio</option>
+            <option value="Otra">📦 Otras áreas</option>
+          </select>
+
+          <select id="selectRatingMin" onchange="aplicarFiltros()">
+            <option value="0">⭐ Todas las estrellas</option>
+            <option value="4">⭐ 4.0 o más</option>
+            <option value="4.5">⭐ 4.5 o más</option>
+            <option value="5">⭐ 5.0 (Excelente)</option>
+          </select>
+
+          <select id="selectOrdenFilter" onchange="aplicarFiltros()">
+            <option value="recientes">Más recientes</option>
+            <option value="rating">Mejor calificados ★</option>
+            <option value="az">Nombre A-Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Layout Principal Split -->
+  <main class="main-directory-layout">
+    <div class="section-container split-layout">
+      
+      <!-- Columna Izquierda: Grid de Proveedores -->
+      <div class="left-grid-column">
+        <div id="cuerpoTabla" class="cards-grid"></div>
+        <div class="load-more-container">
+          <button id="btnCargarMas" class="btn-load-more" onclick="cargarMasPagina()" style="display: none;">👇 Cargar más servicios</button>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Panel de Detalle -->
+      <aside class="right-detail-column" id="panelDetalle">
+        <div class="detail-placeholder">
+          <span class="ph-icon">👈</span>
+          <h3>Selecciona un servicio</h3>
+          <p>Haz clic en cualquier tarjeta para ver fotos del portafolio, cotización express e información completa.</p>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- 7. Footer Oficial -->
+  <footer class="footer-institucional">
+    <div class="footer-contenido">
+      <div class="footer-logo">
+        <div class="logo-box">
+          <img src="https://th.bing.com/th/id/OIP.c2cA4Bv5BBZG1-Iwl3BaTAAAAA?w=270&h=93&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" 
+               alt="Universidad Tecnológica Metropolitana de Alta Tecnología - UTMAT">
+        </div>
+      </div>
+      <div class="footer-seccion">
+        <p><strong>Universidad Tecnológica Metropolitana de Alta Tecnología - UTMAT</strong></p>
+        <p>Av. Gerónimo de la Cueva S/N, Fracc. Villas del Río. C.P. 20126, Aguascalientes, Ags.</p>
+        <p><strong>Teléfono:</strong> 449-7860951 | <strong>Email:</strong> vinculacion@utma.edu.mx</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/directorio.js"></script>
+</body>
+</html>
